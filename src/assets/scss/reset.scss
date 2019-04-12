@@ -1,0 +1,22 @@
+@import '~normalize.css';
+ul,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+}
+p {
+  margin: 0;
+}
+i {
+  font-style: normal;
+}
+button {
+  outline: none;
+}
+input {
+  outline: none;
+  border: none;
+}
