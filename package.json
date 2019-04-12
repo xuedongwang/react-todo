@@ -8,7 +8,7 @@
     "build": "webpack --env.NODE_ENV=production --config=./build/webpack.build.conf.js",
     "analyze": "webpack --env.NODE_ENV=analyze --config=./build/webpack.build.conf.js",
     "lint:fix": "eslint --fix --ext .js,.jsx ./src",
-    "commit": "git add . && git commit -m 'commit' && git push"
+    "commit": "git pull && git add . && git commit -m 'auth commit' && git push"
   },
   "author": "",
   "license": "ISC",
