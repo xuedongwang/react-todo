@@ -6,23 +6,28 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const buildWebpackConfig = (env) => {
-  console.log(env);
   const config = {
     mode: 'production',
     entry: {
-      app: './src/main.js',
-      vendor: ['react','react-dom']
+      app: './src/main.js'
     },
     output: {
       publicPath: '/',
       path: path.join(__dirname, '..', 'dist'),
-      filename: 'js/[name].[chunkhash:16].js'
+      filename: '[name].[chunkhash:6].js',
+      chunkFilename: '[name].[chunkhash:6].js' // 代码拆分后的文件名
     },
     resolve: {
       alias: {
         '@': path.join(__dirname, '..', 'src')
       },
       extensions: ['.js', '.jsx', '.json', '.scss']
+    },
+    optimization: {
+      runtimeChunk: true,
+      splitChunks: {
+        chunks: 'all'
+      }
     },
     devtool: "eval-source-map",
     module: {
@@ -103,8 +108,8 @@ const buildWebpackConfig = (env) => {
         template: './index.html'
       }),
       new MiniCssExtractPlugin({
-        filename: 'css/[name].css',
-        chunkFilename: 'css/[id].[hash].css',
+        filename: '[name].css',
+        chunkFilename: '[name].[hash].css',
       }),
       new webpack.DefinePlugin({
         ENV: env.NODE_ENV

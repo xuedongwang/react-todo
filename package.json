@@ -11,7 +11,7 @@
     "commit": "git pull && git add . && git commit -m 'auth commit' && git push"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-transform-runtime": "^7.2.0",
