@@ -12,7 +12,7 @@ const buildWebpackConfig = (env) => {
       app: './src/main.js'
     },
     output: {
-      publicPath: '/',
+      publicPath: '.',
       path: path.join(__dirname, '..', 'dist'),
       filename: '[name].[chunkhash:6].js',
       chunkFilename: '[name].[chunkhash:6].js' // 代码拆分后的文件名
