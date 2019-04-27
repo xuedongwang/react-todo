@@ -7,7 +7,7 @@ class Icon extends Component {
     this.handleClick = this.handleClick.bind(this);
   }
   handleClick (e) {
-    console.log(e.target);
+    this.props.onClick && this.props.onClick(e);
   }
   render () {
     const { className, iconName } = this.props;

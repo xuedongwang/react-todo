@@ -47,9 +47,8 @@ export const switchTodoFilter = (filter) => {
 };
 
 // toggle selected all todos
-export const toggleAllSelectedTodoStatus = (isSelectedAll) => {
+export const toggleAllSelectedTodoStatus = () => {
   return {
-    type: 'TOGGLE_ALL_TODO_STATUS',
-    isSelectedAll
+    type: 'TOGGLE_ALL_TODO_STATUS'
   };
 };

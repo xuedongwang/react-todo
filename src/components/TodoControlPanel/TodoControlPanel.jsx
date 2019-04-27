@@ -10,7 +10,7 @@ import {
 } from './style';
 
 const TodoControlPanel = (props) => {
-  const { clearCompletedTodo, todoCount, allTodoCount, switchTodoFilter, todoStatus } = props;
+  const { clearCompletedTodo, todoCount, allTodoCount, switchTodoFilter, todoFilter } = props;
   return (
     allTodoCount
       ? <FooterWrapper>
@@ -18,21 +18,21 @@ const TodoControlPanel = (props) => {
           <TodoCount>{todoCount} item left</TodoCount>
           <TodoFilter>
             <TodoFilterItem
-              className={`${todoStatus === 'all' ? 'selected' : ''}`}
+              className={`${todoFilter === 'all' ? 'selected' : ''}`}
               onClick={switchTodoFilter}
               data-filter="all"
             >
               All
             </TodoFilterItem>
             <TodoFilterItem
-              className={`${todoStatus === 'active' ? 'selected' : ''}`}
+              className={`${todoFilter === 'active' ? 'selected' : ''}`}
               onClick={switchTodoFilter}
               data-filter="active"
             >
               Active
             </TodoFilterItem>
             <TodoFilterItem
-              className={`${todoStatus === 'completed' ? 'selected' : ''}`}
+              className={`${todoFilter === 'completed' ? 'selected' : ''}`}
               onClick={switchTodoFilter}
               data-filter="completed"
             >
@@ -51,7 +51,7 @@ TodoControlPanel.propTypes = {
   switchTodoFilter: PropTypes.func,
   todoCount: PropTypes.number,
   allTodoCount: PropTypes.number,
-  todoStatus: PropTypes.string
+  todoFilter: PropTypes.string
 };
 
 export default TodoControlPanel;

@@ -10,13 +10,11 @@ class TodoHeader extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      text: '',
-      isSelectedAll: false
+      text: ''
     };
     this.inputEl = null;
     this.handleAddTodoInputChange = this.handleAddTodoInputChange.bind(this);
     this.handleAddTodo = this.handleAddTodo.bind(this);
-    this.handleSelectedAll = this.handleSelectedAll.bind(this);
   }
   handleAddTodoInputChange (e) {
     this.setState({
@@ -37,15 +35,6 @@ class TodoHeader extends Component {
     this.props.addTodo(text);
     this.initAddTodoInput();
   }
-  handleSelectedAll () {
-    const { isSelectedAll } = this.state;
-    this.setState((prevState) => {
-      this.props.toggleAllSelectedTodoStatus(!prevState.isSelectedAll);
-      return {
-        isSelectedAll: !isSelectedAll
-      };
-    });
-  }
   initAddTodoInput () {
     this.setState(() => ({ text: '' }));
     this.inputEl.focus();
@@ -55,13 +44,14 @@ class TodoHeader extends Component {
   }
   render () {
     const {
-      todoList
+      todoList,
+      toggleAllSelectedTodoStatus
     } = this.props;
     return (
       <Fragment>
         <AddTodoInputWrapper>
           <Icon
-            onClick={this.handleSelectedAll}
+            onClick={toggleAllSelectedTodoStatus}
             iconName="icon-iconfontyoujiantou"
             className={
               `icon icon-arrow-right

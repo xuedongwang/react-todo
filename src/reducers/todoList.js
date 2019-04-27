@@ -1,3 +1,4 @@
+let selecteAll = false;
 const todoList = (state = [], action) => {
   switch (action.type) {
     case 'TOGGLE_SELECTED_ALL_TODO':
@@ -47,10 +48,11 @@ const todoList = (state = [], action) => {
         } : todo;
       });
     case 'TOGGLE_ALL_TODO_STATUS':
+      selecteAll = !selecteAll;
       return state.map(todo => {
         return {
           ...todo,
-          completed: action.isSelectedAll
+          completed: selecteAll
         };
       });
     default:

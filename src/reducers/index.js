@@ -1,9 +1,9 @@
 import { combineReducers } from 'redux';
 import todoList from './todoList';
-import todoStatus from './todoStatus';
+import todoFilter from './todoFilter';
 const rootReducer = combineReducers({
   todoList,
-  todoStatus
+  todoFilter
 });
 
 export default rootReducer;

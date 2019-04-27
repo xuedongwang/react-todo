@@ -16,7 +16,7 @@ function getFilterTodoList (todos, filter) {
 
 const mapStateToProps = (state) => {
   return {
-    todoList: getFilterTodoList(state.todoList, state.todoStatus)
+    todoList: getFilterTodoList(state.todoList, state.todoFilter)
   };
 };
 

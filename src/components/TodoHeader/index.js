@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addTodo: (text) => dispatch(addTodo(text)),
-    toggleAllSelectedTodoStatus: (isSelectedAll) => dispatch(toggleAllSelectedTodoStatus(isSelectedAll))
+    toggleAllSelectedTodoStatus: () => dispatch(toggleAllSelectedTodoStatus())
   };
 };
 

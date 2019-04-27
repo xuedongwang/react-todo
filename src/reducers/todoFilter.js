@@ -1,4 +1,4 @@
-const todoStatus = (state = 'all', action) => {
+const todoFilter = (state = 'all', action) => {
   switch (action.type) {
     case 'SWITCH_TODO_FILTER':
       return action.filter;
@@ -7,4 +7,4 @@ const todoStatus = (state = 'all', action) => {
   }
 };
 
-export default todoStatus;
+export default todoFilter;

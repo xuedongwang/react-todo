@@ -6,7 +6,7 @@ const mapStateToProps = (state) => {
   return {
     todoCount: state.todoList.filter(todo => !todo.completed).length,
     allTodoCount: state.todoList.length,
-    todoStatus: state.todoStatus
+    todoFilter: state.todoFilter
   };
 };
 
