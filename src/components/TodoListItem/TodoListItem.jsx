@@ -9,12 +9,17 @@ class TodoListItem extends Component {
       isEdit: false,
       currentTodo: {}
     };
+    this.editInputRef = React.createRef();
     this.handleEdit = this.handleEdit.bind(this);
     this.handleEditBlur = this.handleEditBlur.bind(this);
     this.handleEditEnter = this.handleEditEnter.bind(this);
     this.handleMouseDown = this.handleMouseDown.bind(this);
   }
   handleEdit () {
+    setTimeout(() => {
+      console.log(this.editInputRef);
+      this.editInputRef.current.focus();
+    });
     this.setState((prevState) => ({
       isEdit: !prevState.isEdit
     }));
@@ -65,6 +70,7 @@ class TodoListItem extends Component {
               onChange={editTodo}
               onBlur={this.handleEditBlur}
               onKeyUp={this.handleEditEnter}
+              ref={this.editInputRef}
             />
             : <p
               className={`${completed ? 'completed todo-text' : 'todo-text'}`}
