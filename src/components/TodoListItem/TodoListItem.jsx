@@ -17,8 +17,7 @@ class TodoListItem extends Component {
   }
   handleEdit () {
     setTimeout(() => {
-      console.log(this.editInputRef);
-      this.editInputRef.current.focus();
+      this.editInputRef.current && this.editInputRef.current.focus();
     });
     this.setState((prevState) => ({
       isEdit: !prevState.isEdit
