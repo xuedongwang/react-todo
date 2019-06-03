@@ -3,7 +3,10 @@ const webpack = require('webpack');
 const HTMLPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const DropConsoleWebpackPlugin = require('drop-console-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const pageageJSON = require('../package.json');
 
 const buildWebpackConfig = (env) => {
   const config = {
@@ -13,9 +16,9 @@ const buildWebpackConfig = (env) => {
     },
     output: {
       publicPath: '.',
-      path: path.join(__dirname, '..', 'dist'),
-      filename: '[name].[chunkhash:6].js',
-      chunkFilename: '[name].[chunkhash:6].js' // 代码拆分后的文件名
+      path: path.join(__dirname, '..', 'react-todo-app'),
+      filename: 'js/[name].[chunkhash:6].js',
+      chunkFilename: 'js/[name].[chunkhash:6].js' // 代码拆分后的文件名
     },
     resolve: {
       alias: {
@@ -103,17 +106,25 @@ const buildWebpackConfig = (env) => {
       ]
     },
     plugins: [
-      new CleanPlugin(['./../dist/*'], { allowExternal: true }),
+      new CleanPlugin(['./../react-todo-app/*'], { allowExternal: true }),
       new HTMLPlugin({
         template: './index.html'
       }),
       new MiniCssExtractPlugin({
         filename: '[name].css',
-        chunkFilename: '[name].[hash].css',
+        chunkFilename: 'css/[name].[hash].css',
       }),
       new webpack.DefinePlugin({
-        ENV: env.NODE_ENV
-      })
+        DEVELOPMENT: false,
+        VERSION: pageageJSON.version
+      }),
+      new CopyPlugin([
+        {
+          from: './public',
+          to: path.join(__dirname, '..', 'react-todo-app')
+        }
+      ]),
+      new DropConsoleWebpackPlugin()
     ]
   };
   if (env && env.NODE_ENV === 'analyze') {

@@ -4,7 +4,9 @@ const HTMLPlugin = require('html-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
 const notifier = require('node-notifier');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
+const pageageJSON = require('../package.json');
 const portfinder = require('portfinder');
+
 portfinder.basePort = process.env.PORT || 8080;
 
 const devWebpackConfig = {
@@ -118,7 +120,11 @@ const devWebpackConfig = {
     new HTMLPlugin({
       template: './index.html'
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.DefinePlugin({
+      DEVELOPMENT: true,
+      VERSION: pageageJSON.version
+    })
   ]
 };
 

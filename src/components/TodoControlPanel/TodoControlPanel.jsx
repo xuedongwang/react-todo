@@ -10,7 +10,7 @@ import {
 } from './style';
 
 const TodoControlPanel = (props) => {
-  const { clearCompletedTodo, todoCount, allTodoCount, switchTodoFilter, todoFilter } = props;
+  const { clearCompletedTodos, todoCount, allTodoCount, switchTodoFilter, todoFilter } = props;
   return (
     allTodoCount
       ? <FooterWrapper>
@@ -39,7 +39,7 @@ const TodoControlPanel = (props) => {
               Completed
             </TodoFilterItem>
           </TodoFilter>
-          <ClearCompletedButton onClick={clearCompletedTodo}>Clear completed</ClearCompletedButton>
+          <ClearCompletedButton onClick={clearCompletedTodos}>Clear completed</ClearCompletedButton>
         </FooterContent>
       </FooterWrapper>
       : null
@@ -47,7 +47,7 @@ const TodoControlPanel = (props) => {
 };
 
 TodoControlPanel.propTypes = {
-  clearCompletedTodo: PropTypes.func,
+  clearCompletedTodos: PropTypes.func,
   switchTodoFilter: PropTypes.func,
   todoCount: PropTypes.number,
   allTodoCount: PropTypes.number,

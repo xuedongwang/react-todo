@@ -6,6 +6,9 @@ module.exports = {
   env: {
     browser: true
   },
+  globals: {
+    DEVELOPMENT: false
+  },
   extends: [
     'plugin:react/recommended',
     'standard'
